@@ -189,8 +189,24 @@ paths:
           content: 
             application/json:
               schema:
-                type: string
-                example: Srivatsa worked 160 hours in June 2022
+                type: object
+                properties:
+                  empId:
+                    type: string
+                    example: 100abc001
+                  empName:
+                    type: string
+                    example: Srivatsa
+                  month:
+                    type: string
+                    example: June
+                  year:
+                    type: number
+                    example: 2022
+                  hours:
+                    type: number
+                    example: 160
+                  
   /employees/{reportsTo}:
     get:
       tags:
