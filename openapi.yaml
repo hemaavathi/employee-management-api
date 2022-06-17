@@ -5,9 +5,18 @@ info:
   version: 1.0.0
 servers: 
   - url: http://localhost:8080
+tags:
+  - name: employee
+    description: employee information
+  - name: attendance
+    description: keeps track of attendance
+  - name: managers
+    description: managers information
 paths:
   /employees:
     get:
+      tags:
+        - employee
       summary:  Returns a list of employees
       responses: 
         '200':
@@ -23,6 +32,8 @@ paths:
                       $ref: '#/components/schemas/employee'
     
     post:
+      tags:
+        - employee
       summary: Adds employee
       requestBody:
         required: true
@@ -44,6 +55,8 @@ paths:
   
   /employees/{empId}:
     get:
+      tags:
+        - employee
       summary: Returns employee with the given Id
       parameters:
         - name: empId
@@ -62,6 +75,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/employee'
     patch:
+      tags:
+        - employee
       summary: Updates emloyee
       parameters:
         - name: empId
@@ -86,6 +101,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/employee'
     delete:
+        tags:
+        - employee
         summary: deletes employee with the given Id
         parameters:
         - name: empId
@@ -105,6 +122,8 @@ paths:
                   
   /attendance/{empId}:
     get:
+      tags:
+        - attendance
       summary: Returns attendance report for the given employee
       parameters:
         - name: empId
@@ -123,6 +142,8 @@ paths:
                 items:
                   $ref:  '#/components/schemas/attendance'  
     post:
+      tags:
+        - attendance
       summary: Adds attendance record to the given employee
       parameters:
         - name: empId
@@ -147,6 +168,8 @@ paths:
   
   /attendance/{empId}/{month}:
     get:
+      tags:
+        - attendance
       summary: Returns worked hours for the given employee
       parameters:
         - name: empId
@@ -170,6 +193,8 @@ paths:
                 example: Srivatsa worked 160 hours in June 2022
   /employees/{reportsTo}:
     get:
+      tags:
+        - managers
       summary: Returns list of employees under the given manager
       parameters:
         - name: reportsTo
@@ -192,6 +217,8 @@ paths:
                       $ref: '#/components/schemas/employee'       
   /employees/managers:
     get:
+      tags:
+        - managers
       summary:  Returns a list of managers
       responses: 
         '200':
